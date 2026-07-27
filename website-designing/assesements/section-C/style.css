@@ -1,0 +1,155 @@
+body {
+  font-family: Arial;
+  background-color: #f5f5f5;
+  margin: 0px;
+}
+
+.site-header {
+  background-color: white;
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid black;
+}
+
+.header-content {
+  height: 60px;
+}
+
+.logo {
+  color: orange;
+  font-size: 24px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.main-nav {
+  background-color: black;
+  height: 40px;
+  width: 100%;
+  float: left;
+  text-decoration: none;
+
+}
+
+.main-nav ul {
+  list-style-type: none;
+  margin-top: 10px;
+  margin-left: 700px;
+  text-decoration: none;
+  
+}
+
+.main-nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.main-nav ul li a {
+  text-decoration: underline;
+  color: gray;
+}
+
+.hero {
+  background-color: orange;
+  height: 350px;
+  text-align: center;
+  width: 100%;
+  float: left;
+  display: inline;
+}
+
+.hero:hover {
+  background-color: darkorange;
+}
+
+.hero-content {
+  margin-top: 80px;
+}
+
+.hero-title {
+  color: white;
+  font-size: 40px;
+}
+
+.hero-tagline {
+  color: white;
+}
+
+.order-btn {
+  background-color: white;
+  color: orange;
+  padding: 10px 20px 10px 20px;
+  border: 2px solid orange;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.order-btn:hover {
+  background-color: orange;
+  color: white;
+}
+
+.restaurants {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 30px;
+  float: left;
+  width: 100%;
+}
+
+.restaurant-list {
+  float: left;
+  width: 100%;
+  margin-left: 70px;
+}
+
+.restaurant-card {
+  width: 200px;
+  height: 180px;
+  background-color: white;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid gray;
+}
+.restaurant-card:hover {
+  box-shadow: 0px 0px 10px gray;
+}
+
+.restaurant-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.restaurant-cuisine {
+  color: gray;
+}
+
+.restaurant-rating {
+  color: orange;
+  font-weight: bold;
+}
+
+.restaurant-delivery {
+  color: gray;
+}
+
+.site-footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  height: 80px;
+  width: 100%;
+  float: left;
+  padding-top: 30px;
+  margin-top: 50px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header, footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #080808;
+            color: white;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input{
+            margin-bottom: 10px;
+            height: 30px;
+            width: auto;
+            border-radius: 5px;
+        }
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        button{
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0cc427;
+            color: #020202;
+            border: none;
+            cursor: pointer;
+        }
+        div{
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Food Order Booking</h1>
+    </header>
+
+    <main>
+        <form action="#" method="POST">
+            
+            <div>
+                <label for="customerName">Customer Name:</label><br>
+                <input type="text" id="customerName" name="customerName" required>
+            
+            <br>
+            
+                <label for="deliveryAddress">Delivery Address:</label><br>
+                <textarea id="deliveryAddress" name="deliveryAddress" rows="4" cols="30" required></textarea>
+            
+            <br>
+            
+                <label for="deliveryTime">Delivery Time Slot:</label><br>
+                <select id="deliveryTime" name="deliveryTime">
+                    <option value="" disabled selected>Select a time</option>
+                    <option value="lunch">12:00 PM - 1:00 PM</option>
+                    <option value="afternoon">1:00 PM - 2:00 PM</option>
+                    <option value="dinner">7:00 PM - 8:00 PM</option>
+                </select>
+            
+            <br>
+
+                <button type="submit">Submit Order</button>
+                <button type="reset">Reset Form</button>
+            </div>
+
+        </form>
+    </main>
+
+    <footer>
+        <p> 2026 The Food Delivery Startup. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
