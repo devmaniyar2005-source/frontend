@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 6 - Lists, Tables, and Forms</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Favorite Foods</h2>
+    <ul class="food-list">
+      <li>Pizza</li>
+      <li>Burger</li>
+      <li>Sushi</li>
+      <li>Tacos</li>
+      <li>Pasta</li>
+    </ul>
+
+    <h2>Recent IPL Matches</h2>
+    <table class="ipl-table">
+      <thead>
+        <tr>
+          <th>Team 1</th>
+          <th>Team 2</th>
+          <th>Score</th>
+          <th>Winner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CSK</td>
+          <td>MI</td>
+          <td>156/6 - 157/4</td>
+          <td>MI</td>
+        </tr>
+        <tr>
+          <td>RCB</td>
+          <td>KKR</td>
+          <td>180/5 - 181/3</td>
+          <td>KKR</td>
+        </tr>
+        <tr>
+          <td>DC</td>
+          <td>RR</td>
+          <td>160/8 - 150/9</td>
+          <td>DC</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Music App Sign-Up</h2>
+    <form class="music-form">
+      <input type="text" placeholder="Username" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <select required>
+        <option value="" disabled selected>Favorite Genre</option>
+        <option value="pop">Pop</option>
+        <option value="rock">Rock</option>
+        <option value="hiphop">Hip Hop</option>
+        <option value="jazz">Jazz</option>
+      </select>
+      <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+  </div>
+
+</body>
+</html>

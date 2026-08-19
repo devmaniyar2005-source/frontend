@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background-color: #f0f2f5;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin: 40px 0 20px;
+  color: #333;
+}
+
+.food-list {
+  list-style-type: '🍕  ';
+  padding-left: 30px;
+}
+
+.food-list li {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #444;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.food-list li:hover {
+  color: #e74c3c;
+}
+
+.ipl-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.ipl-table th, .ipl-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.ipl-table th {
+  background-color: #1a237e;
+  color: white;
+  border-bottom: none;
+}
+
+.ipl-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.ipl-table tbody tr:hover {
+  background-color: #e3f2fd;
+}
+
+.ipl-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.music-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.music-form input, 
+.music-form select, 
+.submit-btn {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.music-form input:focus, 
+.music-form select:focus {
+  outline: 2px solid #1db954;
+  border-color: #1db954;
+}
+
+.submit-btn {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(29, 185, 84, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1ed760;
+  transform: scale(1.04);
+}

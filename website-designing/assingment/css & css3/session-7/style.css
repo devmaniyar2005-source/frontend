@@ -1,0 +1,30 @@
+body {
+  color: #333333;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.profile-card {
+  background-color: #e3f2fd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  color: #d84315; 
+}
+
+.playlist-section {
+  background-color: #fff3e0;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.trending-sidebar {
+  background-color: #f3e5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.playlist-section ul.playlist-list li {
+  color: blue;
+}
