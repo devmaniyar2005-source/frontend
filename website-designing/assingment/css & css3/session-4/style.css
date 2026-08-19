@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #e2e2e2;
+}
+
+.task1-container {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.box-block {
+  display: block;
+  background-color: #ff9999;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.box-inline {
+  display: inline;
+  background-color: #99ff99;
+  width: 200px;
+  height: 50px;
+  padding: 15px;
+}
+
+.box-inline-block {
+  display: inline-block;
+  background-color: #9999ff;
+  width: 200px;
+  height: 50px;
+  padding: 15px;
+}
+
+.ig-navbar {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  text-align: justify;
+}
+
+.nav-item {
+  display: inline-block;
+  width: 150px;
+  height: 40px;
+  background-color: #f0f0f0;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.flipkart-layout {
+  background-color: #2874f0;
+  padding: 10px;
+}
+
+.product-list {
+  float: left;
+  width: 70%;
+  background-color: white;
+  padding: 20px;
+  min-height: 300px;
+}
+
+.sidebar-cart {
+  float: right;
+  width: 28%;
+  background-color: white;
+  padding: 20px;
+  min-height: 300px;
+}
+
+.item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}

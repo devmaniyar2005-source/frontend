@@ -1,0 +1,20 @@
+h1 {
+  background-color: #ffdddd;
+}
+
+p {
+  font-size: 20px;
+}
+
+.menu-item {
+  font-style: italic;
+  color: green;
+}
+
+#special-item {
+  background-color: #fffacd;
+}
+
+h1, .menu-item {
+  border: 2px solid black;
+}

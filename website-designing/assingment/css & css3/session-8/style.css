@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #2c3e50;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f1c40f;
+}
+
+.about-section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.about-heading {
+  font-family: 'Poppins', sans-serif;
+  color: #8eb242;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  color: #555555;
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.projects-section {
+  padding: 80px 20px;
+  background-color: #f4f4f9;
+  text-align: center;
+}
+
+.projects-heading {
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: white;
+  width: 220px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-section {
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #bc5a5d 0%, #797176 99%, #776d8f 100%);
+}
+
+.contact-section h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.contact-section p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 10px;
+}
