@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickEats - Food Delivery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .carousel-item {
+            height: 60vh;
+            min-height: 400px;
+        }
+        .carousel-img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            filter: brightness(0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand text-3xl font-extrabold text-orange-600 tracking-tight" href="#">QuickEats</a>
+            
+            <button class="navbar-toggler border-0 focus:ring-2 focus:ring-orange-500" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 gap-3">
+                    <li class="nav-item"><a class="nav-link text-gray-700 font-semibold hover:text-orange-600 transition-colors" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-gray-700 font-semibold hover:text-orange-600 transition-colors" href="#">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-gray-700 font-semibold hover:text-orange-600 transition-colors" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link text-gray-700 font-semibold hover:text-orange-600 transition-colors" href="#">Track Order</a></li>
+                </ul>
+                <button class="btn btn-outline-dark d-flex align-items-center gap-2 rounded-full px-4 font-bold">
+                    <i class="bi bi-cart3"></i> Cart
+                    <span class="badge bg-orange-600 text-white rounded-pill">2</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="carousel-img" alt="Delicious Food">
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h2 class="display-4 font-extrabold text-white mb-3">Craving Something Special?</h2>
+                    <p class="lead text-gray-200 mb-4 text-xl">Get the best local food delivered straight to your door.</p>
+                    <div><button class="btn btn-primary bg-orange-600 border-0 px-5 py-3 rounded-full text-lg font-bold hover:bg-orange-700">Order Now</button></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="carousel-img" alt="Burgers">
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h2 class="display-4 font-extrabold text-white mb-3">50% Off First Order</h2>
+                    <p class="lead text-gray-200 mb-4 text-xl">Use code QUICK50 at checkout and save big today.</p>
+                    <div><button class="btn btn-primary bg-orange-600 border-0 px-5 py-3 rounded-full text-lg font-bold hover:bg-orange-700">Claim Offer</button></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="carousel-img" alt="Pizza">
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h2 class="display-4 font-extrabold text-white mb-3">Free Delivery Weekend</h2>
+                    <p class="lead text-gray-200 mb-4 text-xl">Enjoy zero delivery fees on all orders over ₹499.</p>
+                    <div><button class="btn btn-primary bg-orange-600 border-0 px-5 py-3 rounded-full text-lg font-bold hover:bg-orange-700">Explore Menu</button></div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container py-12">
+        <h3 class="text-3xl font-extrabold text-gray-800 text-center mb-10">Cuisine Categories</h3>
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 bg-orange-100 hover:bg-orange-200 transition-colors rounded-2xl shadow-sm text-center p-4">
+                    <i class="bi bi-egg-fried text-4xl text-orange-600 mb-3"></i>
+                    <h5 class="font-bold text-orange-900 text-lg">Breakfast</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 bg-red-100 hover:bg-red-200 transition-colors rounded-2xl shadow-sm text-center p-4">
+                    <i class="bi bi-fire text-4xl text-red-600 mb-3"></i>
+                    <h5 class="font-bold text-red-900 text-lg">Spicy</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 bg-green-100 hover:bg-green-200 transition-colors rounded-2xl shadow-sm text-center p-4">
+                    <i class="bi bi-flower1 text-4xl text-green-600 mb-3"></i>
+                    <h5 class="font-bold text-green-900 text-lg">Vegan</h5>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 bg-blue-100 hover:bg-blue-200 transition-colors rounded-2xl shadow-sm text-center p-4">
+                    <i class="bi bi-cup-straw text-4xl text-blue-600 mb-3"></i>
+                    <h5 class="font-bold text-blue-900 text-lg">Beverages</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-100 py-12">
+        <div class="container d-flex justify-content-center">
+            <div class="w-100 bg-white p-5 rounded-3xl shadow-md" style="max-width: 600px;">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Place Your Order</h3>
+                
+                <form novalidate>
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control is-valid rounded-xl" id="orderName" placeholder="Full Name" value="Dev Maniyar" required>
+                        <label for="orderName">Full Name</label>
+                        <div class="valid-feedback text-sm font-medium">Looks good!</div>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="tel" class="form-control is-invalid rounded-xl" id="orderPhone" placeholder="Phone Number" required>
+                        <label for="orderPhone">Phone Number</label>
+                        <div class="invalid-feedback text-sm font-medium">Please enter a valid mobile number.</div>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control is-invalid rounded-xl" placeholder="Delivery Address" id="orderAddress" style="height: 100px" required></textarea>
+                        <label for="orderAddress">Delivery Address</label>
+                        <div class="invalid-feedback text-sm font-medium">Delivery address is required.</div>
+                    </div>
+
+                    <div class="form-floating mb-5">
+                        <select class="form-select is-valid rounded-xl" id="orderTime" aria-label="Delivery Time" required>
+                            <option disabled>Select delivery slot</option>
+                            <option value="now" selected>Now</option>
+                            <option value="30m">Within 30 min</option>
+                            <option value="lunch">12:00 PM - 1:00 PM</option>
+                        </select>
+                        <label for="orderTime">Delivery Time Slot</label>
+                        <div class="valid-feedback text-sm font-medium">Slot available.</div>
+                    </div>
+
+                    <button class="btn w-100 py-3 bg-orange-600 text-white hover:bg-orange-700 font-bold text-lg rounded-xl transition-colors" type="submit">Complete Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <h4 class="text-2xl font-extrabold tracking-wider text-orange-500 mb-2">QuickEats</h4>
+            <p class="text-gray-400 font-medium text-sm mb-0">Delivering happiness, one meal at a time.</p>
+            <hr class="border-gray-600 my-3 w-50 mx-auto">
+            <p class="text-gray-500 text-xs tracking-wide"> 2026 QuickEats. All rights reserved.</p>
+        </div>
+    </footer>
+
+   
+</body>
+</html>
