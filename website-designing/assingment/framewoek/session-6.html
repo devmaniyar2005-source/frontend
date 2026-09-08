@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 6 - Tailwind CSS Introduction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-sky-200">
+
+  <nav class="bg-gray-900 text-white p-5 flex justify-between items-center mb-10">
+    <div class="font-bold text-2xl tracking-widest pl-4">SPOTIFY</div>
+    <ul class="flex justify-evenly w-1/2 font-semibold">
+      <li><a href="#" class="hover:text-green-400 transition-colors">Premium</a></li>
+      <li><a href="#" class="hover:text-green-400 transition-colors">Support</a></li>
+      <li><a href="#" class="hover:text-green-400 transition-colors">Download</a></li>
+    </ul>
+  </nav>
+
+  <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6 flex items-center space-x-6 mb-10">
+    <img class="h-24 w-24 rounded-full object-cover border-4 border-pink-500 p-1" src="https://picsum.photos/100" alt="Profile">
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900">travel_diaries</h2>
+      <p class="text-gray-500 text-sm mb-4">Adventure & Photography</p>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1.5 px-6 rounded-md transition-colors">
+        Follow
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto h-96 bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl flex flex-col justify-center items-center text-white shadow-2xl mb-10">
+    <h1 class="text-6xl font-extrabold mb-4 drop-shadow-md">The Spice Route</h1>
+    <p class="text-xl mb-8 font-medium drop-shadow">Authentic flavors delivered straight to your door.</p>
+    <button class="bg-white text-red-600 font-bold text-lg py-3 px-10 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+      Explore Menu
+    </button>
+  </div>
+
+</body>
+</html>
