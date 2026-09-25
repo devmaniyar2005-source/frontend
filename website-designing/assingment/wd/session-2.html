@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive UI Elements | Dev Maniyar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Custom Dark Theme Styles -->
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            font-family: 'Inter', sans-serif;
+        }
+        .task-card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .task-title {
+            color: #22d3ee; /* Cyan 400 */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .task-desc {
+            color: #94a3b8; /* Slate 400 */
+        }
+
+        /* Zomato FAQ */
+        .faq-item {
+            border: 1px solid #334155;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-question {
+            background-color: #cb202d; /* Zomato Red */
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+        }
+        .faq-answer {
+            background-color: #0f172a;
+            padding: 15px;
+            border-top: 1px solid #334155;
+            display: none; /* Hidden by default */
+        }
+
+        /* Notification Bar */
+        #topNotification {
+            display: none; /* Hidden initially for fadeIn */
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Spotify Playlist */
+        .spotify-card {
+            background-color: #181818;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .spotify-btn {
+            background-color: #1DB954;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 24px;
+        }
+        .spotify-btn:hover {
+            background-color: #1ed760;
+        }
+        #playlistSongs {
+            display: none; /* Hidden initially */
+        }
+        .song-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+            color: #b3b3b3;
+        }
+
+        /* Instagram Post */
+        .insta-post {
+            background-color: #000000;
+            border: 1px solid #262626;
+            border-radius: 8px;
+            padding: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="py-4">
+
+    <div class="container" style="max-width: 900px;">
+        
+        <!-- Notification Bar (.fadeIn and .hide) -->
+        <div id="topNotification" class="d-flex justify-content-between align-items-center">
+            <span>🎉 Get 20% off your first Zomato order with code <strong>DEV20</strong>!</span>
+            <button id="closeNotif" class="btn btn-sm text-white fs-5 border-0 bg-transparent">&times;</button>
+        </div>
+
+        <h1 class="text-center mb-2" style="color: #a78bfa;">Interactive Animations</h1>
+        <p class="text-center mb-5" style="color: #64748b;">Developed by Dev Maniyar</p>
+
+        <!-- Food Delivery FAQ (.hide and .show) -->
+        <div class="task-card">
+            <h4 class="task-title">FAQ Accordion</h4>
+            <p class="task-desc small mb-4">Click a question to reveal the answer while hiding the others dynamically.</p>
+            
+            <div class="faq-item">
+                <h5 class="faq-question d-flex justify-content-between">
+                    How long does delivery take? <span>+</span>
+                </h5>
+                <div class="faq-answer">Usually between 30 to 45 minutes depending on the restaurant's preparation time and your location in Rajkot.</div>
+            </div>
+            <div class="faq-item">
+                <h5 class="faq-question d-flex justify-content-between">
+                    Can I track my order? <span>+</span>
+                </h5>
+                <div class="faq-answer">Yes! Once the restaurant accepts your order, you can track the delivery partner in real-time.</div>
+            </div>
+            <div class="faq-item">
+                <h5 class="faq-question d-flex justify-content-between">
+                    Do you offer contactless delivery? <span>+</span>
+                </h5>
+                <div class="faq-answer">Absolutely. You can select 'Leave at door' during checkout for a 100% contactless experience.</div>
+            </div>
+        </div>
+
+        <!-- Spotify Playlist (.slideToggle) -->
+        <div class="task-card">
+            <h4 class="task-title text-center">Playlist Details Toggle</h4>
+            <p class="task-desc small text-center mb-4">Click the button below to smoothly expand or collapse the song list.</p>
+            
+            <div class="spotify-card shadow-lg">
+                <div class="d-flex align-items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Lofi Beats" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                    <div>
+                        <h4 class="mb-1 text-white fw-bold">Lofi Coding Beats</h4>
+                        <p class="mb-0 text-secondary small">Curated by Dev Maniyar</p>
+                    </div>
+                </div>
+                
+                <button id="togglePlaylist" class="spotify-btn w-100 mb-3">View Playlist Details</button>
+                
+                <!-- Hidden Song List -->
+                <div id="playlistSongs">
+                    <div class="song-item text-white">1. Midnight City Lounge</div>
+                    <div class="song-item">2. Python Rain</div>
+                    <div class="song-item">3. React State of Mind</div>
+                    <div class="song-item border-0">4. Debugging Dreams</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Animation Chain -->
+        <div class="task-card">
+            <h4 class="task-title text-center">Animation Sequences</h4>
+            <p class="task-desc small text-center mb-4">Click "Like" to trigger a chained sequence of visual effects.</p>
+            
+            <div class="insta-post shadow">
+                <!-- Post Header -->
+                <div class="d-flex align-items-center mb-3 text-white">
+                    <img src="https://wallpaperaccess.com/full/1106649.jpg" class="rounded-circle me-2" style="width: 35px; height: 35px;" alt="Avatar">
+                    <span class="fw-bold">dev_maniyar_</span>
+                </div>
+                
+                <!-- Post Image -->
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded mb-3 w-100" alt="Setup">
+                
+                <!-- Success Message (Hidden) -->
+                <div id="likedMsg" class="alert alert-danger py-2 fw-bold text-center" style="display: none;">
+                    ❤️ You liked this post!
+                </div>
+
+                <!-- Post Actions -->
+                <div class="mb-3">
+                    <button id="likeBtn" class="btn btn-outline-danger fw-bold w-100">❤️ Like Post</button>
+                </div>
+                
+                <div class="text-light small">
+                    <span class="fw-bold">dev_maniyar_</span> Late night coding session! Testing out fluid UI animations... 🚀
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Logic Block -->
+    <script>
+        $(document).ready(function() {
+            
+            // Fade In notification bar on load, hide on close
+            $('#topNotification').fadeIn(1500); 
+
+            $('#closeNotif').click(function() {
+                $('#topNotification').hide(); 
+            });
+
+            // FAQ Section accordion logic
+            $('.faq-question').click(function() {
+                $('.faq-answer').hide();
+                $('.faq-question span').text('+');
+                
+                $(this).next('.faq-answer').show();
+                $(this).find('span').text('-');
+            });
+
+            // Spotify Playlist toggle logic
+            $('#togglePlaylist').click(function() {
+                $('#playlistSongs').slideToggle(400, function() {
+                    if ($('#playlistSongs').is(':visible')) {
+                        $('#togglePlaylist').text('Hide Playlist Details');
+                    } else {
+                        $('#togglePlaylist').text('View Playlist Details');
+                    }
+                });
+            });
+
+            // Instagram Animation Chaining
+            $('#likeBtn').click(function() {
+                var $btn = $(this);
+                
+                $btn.fadeOut(300, function() {
+                    $('#likedMsg').slideDown(300)
+                        .delay(2000)
+                        .slideUp(300, function() {
+                            $btn.fadeIn(300);
+                        });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

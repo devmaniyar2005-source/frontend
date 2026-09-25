@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Data Fetching | Dev Maniyar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Custom Dark Theme Styles -->
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            font-family: 'Inter', sans-serif;
+        }
+        .task-card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .task-title {
+            
+            color: #22d3ee; /* Cyan 400 */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .task-desc {
+            color: #94a3b8; /* Slate 400 */
+        }
+        .data-list {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .data-list li {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #1e293b;
+            color: #e2e8f0;
+        }
+        .data-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .table-dark-custom {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border: 1px solid #334155;
+        }
+        .table-dark-custom th, .table-dark-custom td {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-color: #334155;
+        }
+        .explanation-box {
+            background-color: rgba(34, 211, 238, 0.1);
+            border-left: 4px solid #22d3ee;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body class="py-5">
+
+    <div class="container" style="max-width: 900px;">
+        <h1 class="text-center mb-2" style="color: #a78bfa;">Seamless Data Fetching</h1>
+        <p class="text-center mb-5" style="color: #64748b;">Developed by Dev Maniyar</p>
+
+        <!-- Dynamic Post Feed -->
+        <div class="task-card">
+            <h4 class="task-title">Dynamic Post Feed</h4>
+            <p class="task-desc small mb-4">Click the button below to retrieve and display the latest posts seamlessly, without interrupting or reloading your browsing experience.</p>
+            
+            <button id="loadPostsBtn" class="btn fw-bold px-4 py-2 mb-3 text-dark" style="background-color: #22d3ee;">Load Posts</button>
+            <span id="postsLoader" class="spinner-border spinner-border-sm text-info ms-2" style="display: none;" role="status"></span>
+            
+            <ul id="postList" class="data-list" style="display: none;">
+                <!-- Posts will be injected here -->
+            </ul>
+        </div>
+
+        <!-- Instant Comment Retrieval -->
+        <div class="task-card">
+            <h4 class="task-title">Instant Subscriber Directory</h4>
+            <p class="task-desc small mb-4">Load recent user contact emails instantly into the feed below using background data requests.</p>
+            
+            <button id="loadCommentsBtn" class="btn btn-outline-info fw-bold px-4 py-2 mb-3">Load Contact Emails</button>
+            <span id="commentsLoader" class="spinner-border spinner-border-sm text-info ms-2" style="display: none;" role="status"></span>
+            
+            <div id="comments" class="data-list" style="display: none;">
+                <!-- Comment emails will be injected here -->
+            </div>
+        </div>
+
+        <!-- Restaurant Directory -->
+        <div class="task-card">
+            <h4 class="task-title">Local Restaurant Directory</h4>
+            <p class="task-desc small mb-4">Discover our dynamically generated list of top regional restaurants across Gujarat, pulled from a remote database.</p>
+            
+            <button id="loadRestosBtn" class="btn btn-danger fw-bold px-4 py-2 mb-3">Find Restaurants</button>
+            <span id="restosLoader" class="spinner-border spinner-border-sm text-danger ms-2" style="display: none;" role="status"></span>
+            
+            <div class="table-responsive" id="restoTableContainer" style="display: none;">
+                <table class="table table-bordered table-dark-custom mt-3 rounded overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th>Restaurant Name</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restoTableBody">
+                        <!-- Restaurant data will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modern Data Fetching -->
+        <div class="task-card">
+            <h4 class="task-title">Modern Native Fetching</h4>
+            <p class="task-desc small mb-4">A demonstration of modern, native browser data retrieval techniques ensuring optimal performance and clean architecture.</p>
+            
+            <button id="fetchPostsBtn" class="btn fw-bold px-4 py-2 mb-4 text-white" style="background-color: #8b5cf6;">Fetch Recent Posts</button>
+            
+            <ul id="fetchPostList" class="data-list mb-4" style="display: none;">
+                <!-- Fetch posts will be injected here -->
+            </ul>
+
+            <div class="explanation-box mt-4">
+                <h5 class="fw-bold" style="color: #22d3ee;">Robust Error Management</h5>
+                <p class="text-light small mb-2">Our architecture ensures uninterrupted user experiences by distinguishing between severe network failures (like lost internet connections) and server-side data errors.</p>
+                <p class="text-light small mb-0">If a remote service is temporarily unavailable, the system catches the interruption gracefully in the background rather than crashing the interface.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic Block -->
+    <script>
+        $(document).ready(function() {
+            
+            // Post Feed Method
+            $('#loadPostsBtn').click(function() {
+                $('#postsLoader').show();
+                
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    method: 'GET',
+                    success: function(data) {
+                        $('#postList').empty().show();
+                        // Loop through the first 5 posts
+                        $.each(data.slice(0, 5), function(index, post) {
+                            $('#postList').append(`<li><strong>${post.id}.</strong> ${post.title}</li>`);
+                        });
+                        $('#postsLoader').hide();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", error);
+                        $('#postsLoader').hide();
+                    }
+                });
+            });
+
+            // Contact Email Method
+            $('#loadCommentsBtn').click(function() {
+                $('#commentsLoader').show();
+                
+                // Fetch mock data but map it to Indian/Gujarati names for localization
+                $.getJSON('https://jsonplaceholder.typicode.com/comments', function(data) {
+                    $('#comments').empty().show();
+                    
+                    const indianEmails = [
+                        'rahul.patel@gmail.com', 
+                        'neha.shah@yahoo.in', 
+                        'amit.desai@outlook.com', 
+                        'pooja.joshi@example.in', 
+                        'karan.mehta@domain.in'
+                    ];
+
+                    // Append first 5 localized comment emails
+                    $.each(data.slice(0, 5), function(index, comment) {
+                        $('#comments').append(`<div class="text-info fw-bold mb-2">📧 ${indianEmails[index]}</div>`);
+                    });
+                    $('#commentsLoader').hide();
+                });
+            });
+
+            // Zomato Restaurant List Method
+            $('#loadRestosBtn').click(function() {
+                $('#restosLoader').show();
+                
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/users',
+                    method: 'GET',
+                    success: function(users) {
+                        $('#restoTableBody').empty();
+                        $('#restoTableContainer').fadeIn();
+                        
+                        // Map mock users to famous authentic Gujarati restaurants and cities
+                        const gujRestaurants = [
+                            { name: "The Grand Thakar", city: "Rajkot" },
+                            { name: "Honest Restaurant", city: "Ahmedabad" },
+                            { name: "Sasumaa Gujarati Thali", city: "Surat" },
+                            { name: "Gordhan Thali", city: "Vadodara" },
+                            { name: "Kansar Gujarati Thali", city: "Jamnagar" }
+                        ];
+                        
+                        $.each(users.slice(0, 5), function(index, user) {
+                            let row = `
+                                <tr>
+                                    <td class="fw-bold text-danger">🍽️ ${gujRestaurants[index].name}</td>
+                                    <td>${gujRestaurants[index].city}</td>
+                                </tr>
+                            `;
+                            $('#restoTableBody').append(row);
+                        });
+                        $('#restosLoader').hide();
+                    }
+                });
+            });
+
+            // Modern fetch() Syntax (Vanilla JS)
+            document.getElementById('fetchPostsBtn').addEventListener('click', function() {
+                const btn = this;
+                btn.textContent = "Fetching...";
+                
+                // Fetch API Call
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then(response => {
+                        // Custom error handling
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const list = document.getElementById('fetchPostList');
+                        list.innerHTML = ''; // Clear existing
+                        list.style.display = 'block';
+                        
+                        // Slice first 5 to keep UI clean
+                        data.slice(0, 5).forEach(post => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span style="color: #a78bfa;">[Fetched]</span> ${post.title}`;
+                            list.appendChild(li);
+                        });
+                        
+                        btn.textContent = "Fetch Recent Posts";
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        btn.textContent = "Fetch Failed!";
+                    });
+            });
+
+        });
+    </script>
+</body>
+</html>

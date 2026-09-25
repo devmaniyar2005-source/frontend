@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search Bar</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; }
+        .search-container { position: relative; width: 400px; margin: 50px auto; }
+        #search-bar { 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 16px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box;
+        }
+        #suggestions { 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            right: 0; 
+            background: #fff; 
+            border: 1px solid #ddd; 
+            border-top: none; 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: none; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        #suggestions li { 
+            padding: 10px 12px; 
+            cursor: pointer; 
+            border-bottom: 1px solid #eee; 
+            color: #333;
+        }
+        #suggestions li:last-child { border-bottom: none; }
+        #suggestions li:hover { background-color: #f1f1f1; }
+        
+        /* TASK 4: Highlight style */
+        .highlight { 
+            background-color: #ffeeba; 
+            font-weight: bold; 
+            color: #d39e00;
+        }
+        .price { color: #28a745; font-weight: bold; float: right; }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search for products (e.g., Sony, Apple)..." autocomplete="off">
+        <ul id="suggestions"></ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            
+            // TASK 1 & 2: Product data embedded directly to keep everything in ONE file
+            const products = [
+                {"name": "Apple iPhone 15 Pro", "price": 1199},
+                {"name": "Samsung Galaxy S24 Ultra", "price": 1299},
+                {"name": "Sony WH-1000XM5 Headphones", "price": 398},
+                {"name": "Dell XPS 15 Laptop", "price": 1899},
+                {"name": "Apple MacBook Air M3", "price": 1099},
+                {"name": "Logitech MX Master 3S Mouse", "price": 99},
+                {"name": "LG C3 55-inch OLED TV", "price": 1499},
+                {"name": "Sony PlayStation 5", "price": 499}
+            ];
+
+            // Trigger on every keystroke
+            $('#search-bar').on('input', function() {
+                let query = $(this).val().trim();
+                let $suggestions =$('#suggestions');
+                $suggestions.empty(); 
+
+                // Hide dropdown if search bar is empty
+                if (query.length === 0) {
+                    $suggestions.hide();
+                    return;
+                }
+
+                // Filter products that match the search query (case-insensitive)
+                let matches = products.filter(function(product) {
+                    return product.name.toLowerCase().includes(query.toLowerCase());
+                });
+
+                // TASK 5: Slice the array to limit suggestions to a maximum of 5
+                matches = matches.slice(0, 5);
+
+                if (matches.length > 0) {
+                    matches.forEach(function(match) {
+                        // TASK 4: Highlight the matching part of the string
+                        // The 'gi' flag makes the regex global and case-insensitive
+                        let regex = new RegExp("(" + query + ")", "gi");
+                        
+                        // Wrap the matched text in a span with the .highlight class
+                        let highlightedName = match.name.replace(regex, "<span class='highlight'>$1</span>");
+
+                        // Append the list item to the dropdown. 
+                        // We store the raw, un-highlighted name in a data attribute for Task 3.
+                        $suggestions.append(`
+                            <li data-name="${match.name}">
+                                ${highlightedName} 
+                                <span class="price">$${match.price}</span>
+                            </li>
+                        `);
+                    });
+                    $suggestions.show();
+                } else {
+                    $suggestions.hide();
+                }
+            });
+
+            // TASK 3: Auto-fill search bar and close dropdown on click
+            $('#suggestions').on('click', 'li', function() {
+                // Retrieve the raw product name from the data-name attribute
+                let selectedProduct = $(this).data('name');
+                
+                // Auto-fill the input
+                $('#search-bar').val(selectedProduct);
+                
+                // Close and clear the dropdown
+                $('#suggestions').hide().empty();
+            });
+
+            // Optional: Close dropdown if user clicks outside the search container
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.search-container').length) {$('#suggestions').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

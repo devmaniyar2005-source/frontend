@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive UI Elements | Dev Maniyar</title>
+    
+    <!-- Bootstrap 5 CSS for quick, beautiful layout styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Custom Dark Theme Styles -->
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            font-family: 'Inter', sans-serif;
+        }
+        .task-card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .task-title {
+            color: #22d3ee; /* Cyan 400 */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .task-desc {
+            color: #94a3b8; /* Slate 400 */
+        }
+        
+        /* Menu items styling */
+        .menu-container {
+            display: flex;
+            gap: 15px;
+        }
+        .menu-item {
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #0f172a; /* Dark text to contrast with the light background */
+            font-weight: bold;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .menu-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Instagram Post styling */
+        .insta-post {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="py-5">
+
+    <div class="container" style="max-width: 900px;">
+        <h1 class="text-center mb-2" style="color: #a78bfa;">Interactive UI Elements</h1>
+        <p class="text-center mb-5" style="color: #64748b;">Developed by Dev Maniyar</p>
+
+        <!-- Dynamic Menu Items -->
+        <div class="task-card">
+            <h4 class="task-title">Dynamic Navigation Menu</h4>
+            <p class="task-desc small mb-4">Notice the menu items below. Their background color is automatically updated to a light theme as soon as the page loads to draw attention.</p>
+            
+            <div class="menu-container">
+                <div class="menu-item">Dashboard</div>
+                <div class="menu-item">Python Projects</div>
+                <div class="menu-item">React Apps</div>
+            </div>
+        </div>
+
+        <!-- Hidden Message Reveal -->
+        <div class="task-card">
+            <h4 class="task-title">Interactive Notifications</h4>
+            <p class="task-desc small mb-4">Click the button below to trigger an animation that reveals a secret greeting message.</p>
+            
+            <button id="showBtn" class="btn fw-bold text-dark px-4 py-2 mb-3" style="background-color: #22d3ee;">Reveal Message</button>
+            
+            <div id="hiddenMessage" class="alert fw-bold border-0 text-white mt-3" style="display: none; background-color: #059669;">
+                🎉 Hello Dev Maniyar! You successfully revealed this dynamic message!
+            </div>
+        </div>
+
+        <!-- Instagram Style Post Toggle -->
+        <div class="task-card">
+            <h4 class="task-title text-center">Social Media Feed Interaction</h4>
+            <p class="task-desc small text-center mb-4">Use the control buttons to smoothly hide or show the post's caption text.</p>
+            
+            <div class="insta-post shadow mt-4">
+                <!-- Post Header -->
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar"></div>
+                    <span class="fw-bold text-white">dev_maniyar_</span>
+                </div>
+                
+                <!-- Post Image -->
+                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded mb-3 w-100" alt="Coding Setup">
+                
+                <!-- Post Actions -->
+                <div class="mb-3 fs-5">
+                    <span class="me-3" style="cursor: pointer;">❤️</span>
+                    <span class="me-3" style="cursor: pointer;">💬</span>
+                    <span style="cursor: pointer;">↗️</span>
+                </div>
+                
+                <!-- Post Caption -->
+                <div id="instaCaption" class="mb-4 text-light">
+                    <span class="fw-bold">dev_maniyar_</span> Building interactive web applications with dynamic animations today! 💻✨ #WebDev #Coding
+                </div>
+                
+                <!-- Toggle Buttons -->
+                <div class="d-flex gap-2">
+                    <button id="hideCaptionBtn" class="btn btn-outline-danger flex-fill fw-bold">Hide Caption</button>
+                    <button id="showCaptionBtn" class="btn btn-outline-info flex-fill fw-bold">Show Caption</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Logic Block -->
+    <script>
+        $(document).ready(function() {
+            
+            // Updates menu background color on load
+            $('.menu-item').css('background-color', '#f5f5f5');
+
+            // Fades in the hidden message smoothly
+            $('#showBtn').click(function() {
+                $('#hiddenMessage').fadeIn(); 
+            });
+
+            // Slides the caption up (hides it)
+            $('#hideCaptionBtn').click(function() {
+                $('#instaCaption').slideUp('fast');
+            });
+
+            // Slides the caption down (shows it)
+            $('#showCaptionBtn').click(function() {
+                $('#instaCaption').slideDown('fast');
+            });
+
+        });
+    </script>
+</body>
+</html>
