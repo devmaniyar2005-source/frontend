@@ -1,0 +1,12 @@
+[
+    {"name": "Samsung Galaxy S24 Ultra", "price": "₹1,29,999"},
+    {"name": "Apple iPhone 15 Pro Max", "price": "₹1,59,900"},
+    {"name": "Sony PlayStation 5 Console", "price": "₹54,990"},
+    {"name": "Dell XPS 15 Laptop", "price": "₹1,85,000"},
+    {"name": "Apple MacBook Air M3", "price": "₹1,14,900"},
+    {"name": "Samsung 55 inch 4K Smart TV", "price": "₹45,990"},
+    {"name": "Sony WH-1000XM5 Headphones", "price": "₹29,990"},
+    {"name": "Apple AirPods Pro (2nd Gen)", "price": "₹24,900"},
+    {"name": "Nintendo Switch OLED", "price": "₹34,990"},
+    {"name": "Logitech MX Master 3S Mouse", "price": "₹9,995"}
+]

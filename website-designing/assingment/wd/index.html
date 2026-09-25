@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search Project | Dev Maniyar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Custom Dark Theme Styles -->
+    <style>
+        body {
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+            font-family: 'Inter', sans-serif;
+        }
+        .search-widget {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 40px 30px;
+            margin-top: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Search Bar Styling */
+        .search-container {
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .search-input {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border: 2px solid #334155;
+            padding: 16px 24px;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #22d3ee;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
+        }
+        .search-input::placeholder {
+            color: #64748b;
+        }
+        
+        /* Dropdown Styling */
+        .suggestion-box {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0 0 12px 12px;
+            margin-top: -8px;
+            padding-top: 8px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .suggestion-item {
+            padding: 14px 24px;
+            border-bottom: 1px solid #334155;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        .suggestion-item:hover {
+            background-color: #334155;
+        }
+        
+        /* Highlight Matching Text */
+        .highlight-match {
+            background-color: #fde047; /* Yellow */
+            color: #0f172a; /* Dark Slate */
+            font-weight: bold;
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="max-width: 900px;">
+        <div class="search-widget">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3" style="color: #22d3ee;">Discover Products</h2>
+                <p class="text-secondary fs-5">Search for electronics, accessories, and more in real-time.</p>
+            </div>
+            
+            <!-- Search Container -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Start typing a product name..." autocomplete="off">
+                
+                <!-- Suggestion Dropdown -->
+                <div id="suggestionBox" class="suggestion-box">
+                    <!-- Dynamic suggestions will be injected here -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- jQuery Logic Block -->
+    <script>
+        $(document).ready(function() {
+            
+            // Listen for user typing in the search box
+            $('#searchInput').on('input', function() {
+                let query = $(this).val().trim().toLowerCase();
+                let $box =$('#suggestionBox');
+                
+                // If input is empty, clear and hide dropdown
+                if (query.length === 0) {
+                    $box.empty().hide();
+                    return;
+                }
+
+                // Fetch data from local JSON file
+                $.getJSON('products.json', function(data) {
+                    
+                    // Filter the array based on user input
+                    let matches = data.filter(function(product) {
+                        return product.name.toLowerCase().includes(query);
+                    });
+
+                    // Limit the array to a maximum of 5 suggestions
+                    matches = matches.slice(0, 5);
+
+                    // Clear previous suggestions
+                    $box.empty();
+
+                    if (matches.length > 0) {
+                        // Loop through matches and create HTML
+                        matches.forEach(function(product) {
+                            
+                            // Highlight matching text using regex
+                            let regex = new RegExp("(" + query + ")", "gi");
+                            let highlightedName = product.name.replace(regex, "<span class='highlight-match'>$1</span>");
+                            
+                            // Build the suggestion row
+                            let itemHtml = `
+                                <div class="suggestion-item" data-fullname="${product.name}">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-light">${highlightedName}</span>
+                                        <span class="text-success fw-bold small">${product.price}</span>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            $box.append(itemHtml);
+                        });
+                        
+                        $box.show();
+                    } else {
+                        // Show "No results" if nothing matches
+                        $box.html('<div class="p-3 text-secondary fst-italic text-center">No products found matching your search.</div>').show();
+                    }
+                    
+                }).fail(function() {
+                    // Hidden error handling for developers
+                    console.error("Error: Could not load products.json. Are you running a local server?");
+                });
+            });
+
+            // Handle clicking on a suggestion
+            $(document).on('click', '.suggestion-item', function() {
+                // Get the full, un-highlighted product name from the data attribute
+                let selectedProduct = $(this).attr('data-fullname');
+                
+                // Auto-fill the search bar
+                $('#searchInput').val(selectedProduct);
+                
+                // Close the dropdown
+                $('#suggestionBox').empty().hide();
+            });
+
+            // Close dropdown if user clicks anywhere outside the search container
+            $(document).click(function(event) {
+                if (!$(event.target).closest('.search-container').length) {$('#suggestionBox').empty().hide();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
